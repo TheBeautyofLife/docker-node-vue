@@ -30,4 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(cookieParser());
 
+/**
+ * App modules.
+ * @private
+ */
+var router = require('./router')(app);
+var logger = require('./logger')(app);
+
+
 module.exports = app;

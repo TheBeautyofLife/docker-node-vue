@@ -5,13 +5,6 @@
         "author": "Author Name",
         "email": "foo@bar.com"
     },
-    "db": {
-        "host": "localhost",
-        "port": 27017,
-        "user": "",
-        "password": "",
-        "name": "mean-test"
-    },
     "mailer": {
         "host": "smtp.provider.com",
         "port": 587,

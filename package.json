@@ -1,14 +1,15 @@
 {
   "name": "docker-node-vue",
   "version": "1.0.0",
-  "description": "A NodeJS + Webpack + Vuejs application",
+  "description": "A NodeJS + Webpack + Vuejs Client application",
   "main": "bin/www",
   "author": "Gonzalo Plaza <gonzalo@verize.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
     "test": "mocha app/tests --recursive --reporter spec --growl",
-    "start": "node ./bin/www"
+    "dev-server": "nodemon ./bin/www",
+    "dev": "webpack"
   },
   "dependencies": {
     "async": "^2.6.1",
@@ -21,9 +22,11 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
     "nodemailer": "^4.6.5",
     "path": "^0.12.7",
     "popper.js": "^1.14.3",
+    "pug": "^2.0.3",
     "request": "^2.87.0",
     "serve-favicon": "^2.5.0",
     "vue": "^2.5.16",
