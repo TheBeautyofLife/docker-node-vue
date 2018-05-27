@@ -19,13 +19,17 @@ var logType = 'combined';
  * Module exports.
  */
 module.exports = function(app) {
-    if (app.get('env') == 'production') {logType = 'common';}
-    app.use(morgan(logType, {
-        stream: fs.createWriteStream(path.join(__dirname, '../logs/error.log'), {
-            flags: 'a'
-        }),
-        skip: function (req, res) {
-            return res.statusCode < 400
-        }
-    }));
+	if (app.get('env') == 'production') {
+		logType = 'common';
+	}
+	app.use(
+		morgan(logType, {
+			stream: fs.createWriteStream(path.join(__dirname, '../logs/error.log'), {
+				flags: 'a'
+			}),
+			skip: function(req, res) {
+				return res.statusCode < 400;
+			}
+		})
+	);
 };

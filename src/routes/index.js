@@ -1,6 +1,6 @@
 /*!
  * index routes
- * Copyright(c) 2016-2017 Gonzalo Plaza
+ * Copyright(c) 2018 Gonzalo Plaza
  * MIT Licensed
  */
 
@@ -16,7 +16,7 @@ var router = express.Router();
 
 //Starting route
 router.get('/', function(req, res) {
-  res.sendFile(path.resolve('public/index.html'));
+	res.sendFile(path.resolve('public/index.html'));
 });
 
 module.exports = router;

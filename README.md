@@ -10,14 +10,25 @@ git clone https://github.com/verize/docker-node-vue.git docker-node-vue
 cd docker-node-vue
 ``` 
 
-2. For testing, try:
+2. Configuration
+Generate your environment configuration file from default, set your own parameters
+```
+cp config/default.dist.json config/development.json
+```
+
+3. Build and test running Docker container:
 
 ```
 docker build -t node-pm2-vue .
 docker run -d -p 3000:3000 node-pm2-vue:latest
 ```
 
-Check server: http://localhost:3000
+Check running server: http://localhost:3000
+
+Test api: 
+```
+curl --include http://localhost:3000/api/v1/status
+```
 
 ## Licensing:
 
