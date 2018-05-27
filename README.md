@@ -14,7 +14,7 @@ cd docker-node-vue
 
 ```
 docker build -t node-pm2-vue .
-docker run -it -p 3000:3000 node-pm2-vue:latest /bin/sh
+docker run -d -p 3000:3000 node-pm2-vue:latest
 ```
 
 Check server: http://localhost:3000

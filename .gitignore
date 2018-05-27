@@ -1,7 +1,6 @@
 # Application
 config/development.json
 config/production.json
-dist/*
 
 # Logs
 logs/

@@ -8,7 +8,8 @@ var index = require('./routes/index');
 /**
  * Module exports.
  */
-module.exports = function(app){
+module.exports = function(express, app) {
+    app.use('/', express.static(path.join(__dirname, '../public')));
     app.use('/', index);
     app.use('*', index);
     app.use(function(req, res, next) {

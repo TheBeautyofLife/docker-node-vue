@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:latest
 
-LABEL MAINTAINER "Gonzalo Plaza <gonzalo@verize.com"
+LABEL MAINTAINER "Gonzalo Plaza <gonzalo@verize.com>"
 
 # Environment vars
 ENV NODE_ENV development
@@ -35,6 +35,9 @@ RUN mkdir -p /app && cp -a /tmp/node_modules /app/
 # "layer" thats been cached will be used if possible
 WORKDIR /app
 COPY . /app
+
+# Compile js bundles (development)
+RUN yarn run dev
 
 # Start pm2.json process file
 CMD ["pm2-runtime", "start", "/app/bin/pm2.json"]

@@ -1,10 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, '../dist');
+const BUILD_DIR = path.resolve(__dirname, '../public');
 const CLIENT_DIR = path.resolve(__dirname, '../src/client');
 const TEMPLATES_DIR = path.resolve(CLIENT_DIR, 'templates');
 const ASSETS_DIR = path.resolve(CLIENT_DIR, 'assets');
@@ -22,17 +23,14 @@ const webpackConfig = {
   },
   output: {
       path: BUILD_DIR,
-      publicPath: '/build/',
-      filename: '[name][hash]_bundle.js'
+      publicPath: '/',
+      filename: '[name]_[hash]_bundle.js'
   },
   module: {
          rules: [
              {
                  test: /\.js$/,
-                 loader: 'babel-loader',
-                 query: {
-                     presets: ['es2015']
-                 }
+                 loader: 'babel-loader'
              },
              {
                  test: /\.vue$/,
@@ -47,13 +45,14 @@ const webpackConfig = {
      plugins: [
          new webpack.NamedModulesPlugin(),
          new webpack.HotModuleReplacementPlugin(),
+         new VueLoaderPlugin(),
          new CleanWebpackPlugin(
              [BUILD_DIR],
              {
                  root: __dirname,
                  watch: true,
                  allowExternal: true,
-                 exclude: ['index.html']
+                 exclude: ['index.html', '404.html', '.gitignore']
              }
          ),
          new webpack.ProvidePlugin({

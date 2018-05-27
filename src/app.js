@@ -25,6 +25,7 @@ var methodOverride = require("method-override");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 //app.use(favicon(path.join(__dirname, '../dist', 'favicon.ico')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('X-HTTP-Method-Override'));
@@ -34,8 +35,7 @@ app.use(cookieParser());
  * App modules.
  * @private
  */
-var router = require('./router')(app);
+var router = require('./router')(express, app);
 var logger = require('./logger')(app);
-
 
 module.exports = app;
